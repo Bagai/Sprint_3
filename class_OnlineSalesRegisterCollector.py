@@ -76,6 +76,34 @@ class OnlineSalesRegisterCollector:
 
     def twenty_percent_tax_calculation(self):
         twenty_percent_tax = []
+        total = []
         for name in self.__name_items:
             if self.__tax_rate[name] == 20:
                 twenty_percent_tax.append(name)
+
+        for name in twenty_percent_tax:
+            total.append(self.__item_price[name])
+        return sum(map(lambda x: x * 0.2, total))
+
+    def ten_percent_tax_calculation(self):
+        twenty_percent_tax = []
+        total = []
+        for name in self.__name_items:
+            if self.__tax_rate[name] == 10:
+                twenty_percent_tax.append(name)
+
+        for name in twenty_percent_tax:
+            total.append(self.__item_price[name])
+        return sum(map(lambda x: x * 0.1, total))
+
+    def total_tax(self):
+        return (
+            self.twenty_percent_tax_calculation() + self.ten_percent_tax_calculation()
+        )
+
+    @staticmethod
+    def get_telephone_number(telephone_number):
+        try:
+            pass
+        except ValueError:
+            print("Необходимо ввести цифры")
