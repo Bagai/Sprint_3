@@ -104,6 +104,12 @@ class OnlineSalesRegisterCollector:
     @staticmethod
     def get_telephone_number(telephone_number):
         try:
-            pass
-        except ValueError:
-            print("Необходимо ввести цифры")
+            if telephone_number != int(telephone_number):
+                raise ValueError("Необходимо ввести цифры")
+            elif len(str(telephone_number)) != 10:
+                raise ValueError('Необходимо ввести 10 цифр после "+7"')
+        except Exception:
+            return f'+7{telephone_number}'
+        else:
+            return f'+7{telephone_number}'
+
