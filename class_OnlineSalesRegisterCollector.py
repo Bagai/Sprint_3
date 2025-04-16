@@ -39,7 +39,7 @@ class OnlineSalesRegisterCollector:
 
     def add_item_to_cheque(self, name):
         try:
-            if 0 < name >= 40:
+            if 0 < len(name) >= 40:
                 raise ValueError(
                     "Нельзя добавить товар, если в его названии нет символов или их больше 40"
                 )
