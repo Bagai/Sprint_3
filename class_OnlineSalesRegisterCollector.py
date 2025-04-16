@@ -39,11 +39,11 @@ class OnlineSalesRegisterCollector:
 
     def add_item_to_cheque(self, name):
         try:
-            if 0 < name < 40:
+            if 0 < name > 40:
                 raise ValueError(
                     "Нельзя добавить товар, если в его названии нет символов или их больше 40"
                 )
-            elif name in self.__item_price:
+            elif name not in self.__item_price:
                 raise NameError("Позиция отсутствует в товарном справочнике")
         except ValueError:
             print(
@@ -83,6 +83,8 @@ class OnlineSalesRegisterCollector:
 
         for name in twenty_percent_tax:
             total.append(self.__item_price[name])
+        if len(total) > 10:
+            return sum(map(lambda x: x * 0.2, total)) * 0.9
         return sum(map(lambda x: x * 0.2, total))
 
     def ten_percent_tax_calculation(self):
@@ -94,6 +96,8 @@ class OnlineSalesRegisterCollector:
 
         for name in twenty_percent_tax:
             total.append(self.__item_price[name])
+        if len(total) > 10:
+            return sum(map(lambda x: x * 0.1, total)) * 0.9
         return sum(map(lambda x: x * 0.1, total))
 
     def total_tax(self):
